@@ -50,7 +50,7 @@ export class LoginComponent {
 
   onSubmit(details = { email: String, password: String }): void {
     console.log(details)
-    this.http.post('http://localhost:5100/login', details).subscribe(
+    this.http.post('https://movie-ticket-pntf.onrender.com/login', details).subscribe(
       (response: any) => {
         console.log(response)
         if (response && response.user._id) {

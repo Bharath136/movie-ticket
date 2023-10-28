@@ -30,7 +30,7 @@ export class RegisterComponent {
   }
 
   onSubmit(details: { firstname: string, lastname: string, email: string, password: string }): void {
-    this.http.post('http://localhost:5100/register', details).subscribe(
+    this.http.post('https://movie-ticket-pntf.onrender.com/register', details).subscribe(
       (response) => {
         window.alert('Registered Successfully!');
         this.route.navigate(['/login']);

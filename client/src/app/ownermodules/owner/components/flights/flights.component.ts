@@ -12,7 +12,7 @@ export class FlightsComponent {
   constructor(private http:HttpClient){
     this.isLoading = true
     const airline = localStorage.getItem('airline')
-    this.http.get<any[]>(`http://localhost:5100/flights/airline/${airline}`).subscribe((res) => {
+    this.http.get<any[]>(`https://movie-ticket-pntf.onrender.com/flights/airline/${airline}`).subscribe((res) => {
       this.flights = res
       this.isLoading = false
     })

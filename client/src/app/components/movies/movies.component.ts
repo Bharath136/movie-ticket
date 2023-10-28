@@ -29,7 +29,7 @@ export class MoviesComponent {
 
   constructor(private http:HttpClient, private route:Router){
     this.isLoading = true
-    this.http.get<any[]>('http://localhost:5100/movies').subscribe((res) => {
+    this.http.get<any[]>('https://movie-ticket-pntf.onrender.com/movies').subscribe((res) => {
       this.filteredMovies = res;
       this.movies = res
       console.log(res)

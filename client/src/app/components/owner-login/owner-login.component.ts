@@ -31,7 +31,7 @@ export class OwnerLoginComponent {
   }
 
   onSubmit(details = { airline: String, password: String }): void {
-    this.http.post('http://localhost:5100/airline-login', details).subscribe(
+    this.http.post('https://movie-ticket-pntf.onrender.com/airline-login', details).subscribe(
       (response: any) => {
         console.log(response)
         if (response && response.airlineOwner.airline) {

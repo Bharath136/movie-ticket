@@ -28,14 +28,14 @@ export class OwnerRegiterComponent {
   }
 
   onSubmit(details: {  airline: string, email: string, password: string }): void {
-    this.http.post('http://localhost:5100/airline-register', details).subscribe(
+    this.http.post('https://movie-ticket-pntf.onrender.com/airline-register', details).subscribe(
       (response) => {
-        window.alert('Airline Registered Successfully!');
+        window.alert('Theatre Registered Successfully!');
         this.route.navigate(['/airline-login']);
       },
       (error) => {
         if (error.status === 400) {
-          window.alert('Airline already exists');
+          window.alert('Theatre already exists');
         } else {
           window.alert('Registration Failed!');
         }

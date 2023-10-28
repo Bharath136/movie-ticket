@@ -14,7 +14,7 @@ export class BookingsComponent {
   constructor(private http:HttpClient){
     const userId = localStorage.getItem('userId')
     this.isLoading = true
-    this.http.get<any[]>(`http://localhost:5100/bookings/user/${userId}`).subscribe((res) => {
+    this.http.get<any[]>(`https://movie-ticket-pntf.onrender.com/bookings/user/${userId}`).subscribe((res) => {
       this.bookings = res
       console.log(res)
       this.isLoading = false
@@ -28,10 +28,10 @@ export class BookingsComponent {
   }
 
   onCancleTicket(id:string){
-    this.http.delete(`http://localhost:5100/bookings/${id}`).subscribe((res) => {
+    this.http.delete(`https://movie-ticket-pntf.onrender.com/bookings/${id}`).subscribe((res) => {
       const userId = localStorage.getItem('userId')
       this.isLoading = true
-      this.http.get<any[]>(`http://localhost:5100/bookings/user/${userId}`).subscribe((res) => {
+      this.http.get<any[]>(`https://movie-ticket-pntf.onrender.com/bookings/user/${userId}`).subscribe((res) => {
         this.bookings = res
         this.isLoading = false
       })

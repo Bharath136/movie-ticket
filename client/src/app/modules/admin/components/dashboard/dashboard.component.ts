@@ -13,11 +13,11 @@ export class DashboardComponent {
   isLoading = false
   constructor(private http:HttpClient){
     this.isLoading = true
-    this.http.get<any[]>('http://localhost:5100/flights').subscribe((res) => {
+    this.http.get<any[]>('https://movie-ticket-pntf.onrender.com/flights').subscribe((res) => {
       this.theatres = res
     })
 
-    this.http.get<any[]>('http://localhost:5100/bookings').subscribe((res) => {
+    this.http.get<any[]>('https://movie-ticket-pntf.onrender.com/bookings').subscribe((res) => {
       this.bookings = res
       this.isLoading = false
     })
