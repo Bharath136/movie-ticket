@@ -3,13 +3,13 @@
         <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000" alt="" class="image" />
         <div class="card">
             <form [formGroup]="regForm" #r="ngForm" (ngSubmit)="onSubmit(r.value)" class="form">
-                <h2 class="heading text-center">Airline Login Form</h2>
+                <h2 class="heading text-center">Theatre Login</h2>
                 <div class="form-group mb-2">
-                    <label for="airline">Airline</label>
+                    <label for="airline">Theatre</label>
                     <input placeholder="Enter airline" type="text" class="form-control" id="airline" formControlName="airline" required>
                     <div *ngIf="regForm.controls['airline'].touched && regForm.controls['airline']?.['errors']">
                         <div *ngIf="regForm.controls['airline']?.['errors']?.['required']" class="error-message text-danger">
-                            Airline is required
+                            Theatre is required
                         </div>
                     </div>
                 </div>
