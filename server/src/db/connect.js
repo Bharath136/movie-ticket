@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-
-
-const db = 'mongodb+srv://reeco:reeco@cluster0.6kqp7oh.mongodb.net/reeco?retryWrites=true&w=majority'
+// Middleware
+const db = 'mongodb+srv://movietiketbooking:movietiketbooking@cluster0.axoguse.mongodb.net/movietiketbooking?retryWrites=true&w=majority'
 
 // Connect to MongoDB using the connection string
 mongoose.connect(db, {
@@ -12,3 +11,5 @@ mongoose.connect(db, {
 }).catch((e) => {
   console.log(`No connection: ${e}`);
 });
+
+// mongodb://localhost:27017
