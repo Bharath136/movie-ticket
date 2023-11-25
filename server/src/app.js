@@ -385,27 +385,32 @@ app.get('/products/:id', async (req, res) => {
 
 
 // Update the status of a product by ID
-app.put('/products/:id/', async (req, res) => {
+app.put('/products/:id', async (req, res) => {
   try {
-    const { status } = req.body;
-    // Check if the request contains the 'status' field
-    if (!status) {
-      return res.status(400).send({ error: 'Status field is required for updating' });
+    const productId = req.params.id;
+    const { price, quantity, status } = req.body;
+    console.log(price)
+
+    // Validate if required fields are present
+    if (!price || !quantity || !status) {
+      return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const product = await models.Product.findByIdAndUpdate(
-      req.params.id,
-      { $set: { status } },
+    // Find and update the product
+    const updatedProduct = await models.Product.findByIdAndUpdate(
+      productId,
+      { price, quantity, status },
       { new: true }
     );
 
-    if (!product) {
-      return res.status(404).send({ error: 'Product not found' });
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
     }
 
-    res.send(product);
+    res.status(200).json(updatedProduct);
   } catch (error) {
-    res.status(400).send(error);
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
