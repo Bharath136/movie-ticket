@@ -14,7 +14,7 @@ export class AddFlightComponent {
   onSubmit() {
     // Handle form submission logic
     console.log(this.formData); // Example: Log the form data
-    this.http.post('https://movie-ticket-pntf.onrender.com/flights',this.formData).subscribe((res) => {
+    this.http.post('http://localhost:5100/flights',this.formData).subscribe((res) => {
       console.log(res)
       alert('Flight Added.')
     })

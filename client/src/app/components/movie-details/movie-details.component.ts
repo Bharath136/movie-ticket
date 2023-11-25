@@ -39,7 +39,7 @@ export class MovieDetailsComponent {
     this.generateSeatRows();
     // this.onShowTheatres()
     const id = this.router.snapshot.paramMap.get('id'); // Use the get() method instead of using parentheses ()
-    this.http.get(`https://movie-ticket-pntf.onrender.com/movie/${id}`).subscribe((res: any) => { // Add the type 'any' to the response
+    this.http.get(`http://localhost:5100/movie/${id}`).subscribe((res: any) => { // Add the type 'any' to the response
       this.movieDetails = res;
       
       console.log(this.bookedSeats)
@@ -48,7 +48,7 @@ export class MovieDetailsComponent {
       }
     });
 
-    this.http.get<any>('https://movie-ticket-pntf.onrender.com/bookings').subscribe((res:any) => {
+    this.http.get<any>('http://localhost:5100/bookings').subscribe((res:any) => {
       // console.log(res)
     })
   }
@@ -56,7 +56,7 @@ export class MovieDetailsComponent {
   onShowTheatres() {
     this.isLoading = true
     const id = this.router.snapshot.paramMap.get('id');
-    this.http.get<any[]>(`https://movie-ticket-pntf.onrender.com/movie/${id}`).subscribe((res: any) => {
+    this.http.get<any[]>(`http://localhost:5100/movie/${id}`).subscribe((res: any) => {
       this.availableTheatres = res.theatre
       this.isLoading = false
     })
@@ -137,11 +137,11 @@ export class MovieDetailsComponent {
       paymentMethod: this.selectedMethod,
       paymentStatus: 'success'
     }
-    this.http.post('https://movie-ticket-pntf.onrender.com/bookings', bookingDetails).subscribe((res) => {
+    this.http.post('http://localhost:5100/bookings', bookingDetails).subscribe((res) => {
       console.log(res)
     })
 
-    this.http.put(`https://movie-ticket-pntf.onrender.com/movies/${movieId}/reservedSeats`, { theatreId: this.theatreId, reservedSeats: this.selectedSeats }).subscribe((res) => {
+    this.http.put(`http://localhost:5100/movies/${movieId}/reservedSeats`, { theatreId: this.theatreId, reservedSeats: this.selectedSeats }).subscribe((res) => {
       console.log(res);
     });
     

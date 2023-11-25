@@ -35,9 +35,10 @@ export class MoviesComponent {
       console.log(res)
       this.isLoading = false
     })
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('jwtToken')
+    console.log(token)
     if(!token){
-      this.route.navigate(['/login'])
+      // this.route.navigate(['/login'])
     }
   }
 

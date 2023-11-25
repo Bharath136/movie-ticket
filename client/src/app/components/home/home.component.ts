@@ -94,7 +94,7 @@ export class HomeComponent {
       this.flightId = id
       // currentModal: NgbModalRef;
       this.modalService.open(this.modalContent, { size: 'lg' });
-      this.http.get<any[]>(`https://movie-ticket-pntf.onrender.com/flights/${id}`).subscribe((res: any) => {
+      this.http.get<any[]>(`http://localhost:5100/movie/${id}`).subscribe((res: any) => {
         if (res) {
           this.bookedSeats = res.reservedSeats
         } else {
@@ -102,7 +102,7 @@ export class HomeComponent {
         }
       })
     } else {
-      this.route.navigate(['/login'])
+      // this.route.navigate(['/login'])
     }
 
   }
@@ -119,7 +119,7 @@ export class HomeComponent {
     } else {
       this.isSame = false
     }
-    this.http.get<any[]>('https://movie-ticket-pntf.onrender.com/flights').subscribe((res) => {
+    this.http.get<any[]>('http://localhost:5100/movies').subscribe((res) => {
       this.flights = res.filter(flight =>   flight.origin === this.selectedFrom && flight.destination === this.selectedTo)
       this.isLoading = false
     })
@@ -195,7 +195,7 @@ export class HomeComponent {
     const response = confirm("Are you sure you want to confirm the booking?")
     if (response) {
 
-      this.http.post('https://movie-ticket-pntf.onrender.com/bookings', bookingDetails).subscribe((res) => {
+      this.http.post('http://localhost:5100/bookings', bookingDetails).subscribe((res) => {
         this.currentModal = this.modalService.open(this.paymentModal, { size: 'lg' });
         console.log(res)
       })
